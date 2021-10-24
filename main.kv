@@ -1,0 +1,943 @@
+WindowManager:
+    LoginScreen:
+    CreateScreen:
+
+    HomeScreen:
+    DataStructureWindow:
+    AlgorithmWindow:
+
+    StackWindow:
+    StackVisualizer:
+
+    QueueWindow:
+    QueueVisualizer:
+
+    LinearSearch:
+
+    ArrayWindow:
+    ArrayVisualizer:
+
+<LoginScreen>:
+    name:'LoginScreen'
+    MDFloatLayout:
+        md_bg_color:app.theme_cls.accent_color
+        Image:
+            source:'Logo.png'
+            pos_hint:{"center_x":.5,"center_y":.9}
+            allow_stretch:False
+            keep_ratio:False
+
+        MDLabel:
+            text:'Login'
+            pos_hint:{"center_x":.5,"center_y":.6}
+            font_size:'40sp'
+            font_name:'Cairo-Bold'
+            color:(20/255.0,29/255.0,36/255.0,0.9)
+            halign:'center'
+
+    MDFloatLayout:
+        size_hint: .85,.08
+        pos_hint:{"center_x":.5,"center_y":.48}
+        canvas:
+            Color:
+                rgb:(238/255,238/255,238/255,1)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[25]
+        TextInput:
+            hint_text:'Email'
+            size_hint:1,None
+            pos_hint:{"center_x":.5,"center_y":.6}
+            height:self.minimum_height
+            font_name:'Cairo-Bold'
+            multiline:False
+            cursor_color:(20/255.0,29/255.0,36/255.0,0.9)
+            cursor_width:"2sp"
+            foreground_color:(20/255.0,29/255.0,36/255.0,0.9)
+            background_color:0,0,0,0
+            padding:15
+
+    MDFloatLayout:
+        size_hint: .85,.08
+        pos_hint:{"center_x":.5,"center_y":.34}
+        canvas:
+            Color:
+                rgb:(238/255,238/255,238/255,1)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[25]
+        TextInput:
+            hint_text:'Password'
+            size_hint:1,None
+            pos_hint:{"center_x":.5,"center_y":.6}
+            height:self.minimum_height
+            multiline:False
+            font_name:'Cairo-Bold'
+            cursor_color:(20/255.0,29/255.0,36/255.0,0.9)
+            cursor_width:"2sp"
+            foreground_color:(20/255.0,29/255.0,36/255.0,0.9)
+            background_color:0,0,0,0
+            padding:15
+            password:True
+
+    MDFloatLayout:
+        MDTextButton:
+            text:"Forgot Your Password?"
+            font_name:'Cairo-Bold'
+            text_color:(20/255.0,29/255.0,36/255.0,0.9)
+            pos_hint:{"center_x":.5,"center_y":.28}
+
+        Button:
+            text:"Login"
+            font_name:"Cairo-Bold"
+            font_size:"20sp"
+            size_hint:.5,.08
+            pos_hint:{"center_x":.5,"center_y":.18}
+            background_color:0,0,0,0
+            on_press:
+                app.root.current = "HomeScreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgb:(20/255.0,29/255.0,36/255.0,0.9)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[23]
+        MDLabel:
+            text:'or'
+            pos_hint:{"center_x":.5,"center_y":.12}
+            font_size:'20sp'
+            font_name:'Cairo-Bold'
+            color:(20/255.0,29/255.0,36/255.0,0.9)
+            halign:'center'
+
+        Button:
+            text:"Create Account"
+            font_name:"Cairo-Bold"
+            font_size:"20sp"
+            size_hint:.5,.08
+            pos_hint:{"center_x":.5,"center_y":.05}
+            background_color:0,0,0,0
+            on_press:
+                app.root.current = "CreateScreen"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgb:(20/255.0,29/255.0,36/255.0,0.9)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[23]
+
+<CreateScreen>:
+    name:'CreateScreen'
+    MDFloatLayout:
+        md_bg_color:app.theme_cls.accent_color
+        Image:
+            source:'Logo.png'
+            pos_hint:{"center_x":.5,"center_y":.9}
+            allow_stretch:False
+            keep_ratio:False
+
+        MDLabel:
+            text:'Register'
+            pos_hint:{"center_x":.5,"center_y":.6}
+            font_size:'40sp'
+            font_name:'Cairo-Bold'
+            color:(20/255.0,29/255.0,36/255.0,0.9)
+            halign:'center'
+
+    MDFloatLayout:
+        size_hint: .85,.08
+        pos_hint:{"center_x":.5,"center_y":.48}
+        canvas:
+            Color:
+                rgb:(238/255,238/255,238/255,1)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[25]
+        TextInput:
+            hint_text:'Email'
+            size_hint:1,None
+            pos_hint:{"center_x":.5,"center_y":.6}
+            height:self.minimum_height
+            multiline:False
+            cursor_color:(20/255.0,29/255.0,36/255.0,0.9)
+            cursor_width:"2sp"
+            foreground_color:(20/255.0,29/255.0,36/255.0,0.9)
+            background_color:0,0,0,0
+            padding:15
+
+    MDFloatLayout:
+        size_hint: .85,.08
+        pos_hint:{"center_x":.5,"center_y":.34}
+        canvas:
+            Color:
+                rgb:(238/255,238/255,238/255,1)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[25]
+        TextInput:
+            hint_text:'Password'
+            size_hint:1,None
+            pos_hint:{"center_x":.5,"center_y":.6}
+            height:self.minimum_height
+            multiline:False
+            cursor_color:(20/255.0,29/255.0,36/255.0,0.9)
+            cursor_width:"2sp"
+            foreground_color:(20/255.0,29/255.0,36/255.0,0.9)
+            background_color:0,0,0,0
+            padding:15
+            password:True
+
+    MDFloatLayout:
+        Button:
+            text:"Register"
+            font_name:"Cairo-Bold"
+            font_size:"20sp"
+            size_hint:.5,.08
+            pos_hint:{"center_x":.5,"center_y":.18}
+            background_color:0,0,0,0
+            on_press:
+                app.root.current = "DataStructureWindow"
+                root.manager.transition.direction = "left"
+            canvas.before:
+                Color:
+                    rgb:(20/255.0,29/255.0,36/255.0,0.9)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[23]
+
+<HomeScreen>:
+    name:'HomeScreen'
+    MDBoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            title: "Data Structure Visualizer"
+            font_name:'Cairo-Bold'
+            font_size:'40sp'
+            anchor_title: 'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+            left_action_items: [["account-circle", lambda x: app.callback(x), "Ayush Poojari"]]
+            right_action_items: [["dots-vertical", lambda x: app.callback(x), "Settings"]]
+
+        MDSeparator:
+            height:"4dp"
+        Image:
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,2
+            source: 'DataStructure.png'
+        MDSeparator:
+            height:"2dp"
+
+        MDFillRoundFlatButton:
+            size_hint:1,.4
+            text: "Explore"
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+            on_press:
+                app.root.current = "DataStructureWindow"
+                root.manager.transition.direction = "left"
+
+        MDSeparator:
+            height:"4dp"
+
+        Image:
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,2
+            source: 'AS.png'
+        MDSeparator:
+            height:"2dp"
+
+        MDFillRoundFlatButton:
+            size_hint:1,.4
+            text: "Explore"
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            on_press:
+                app.root.current = "AlgorithmWindow"
+                root.manager.transition.direction = "left"
+
+        MDSeparator:
+            height:"4dp"
+
+
+
+<DataStructureWindow>:
+    name:"DataStructureWindow"
+    MDBoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            title: "DataStructure"
+            font_name:'Cairo-Bold'
+            font_size:"20dp"
+            anchor_title: 'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+
+        MDBoxLayout:
+            orientation:'vertical'
+            Button:
+                size_hint:1,0.1
+                text: "1. Stack"
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current = 'StackWindow'
+                    root.manager.transition.direction = 'left'
+
+
+            Button:
+                size_hint:1,0.1
+                text: "2. Queue"
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text_color: .2,.2,.6, 1
+                font_name:'Roboto-Bold'
+                on_press:
+                    app.root.current = 'QueueWindow'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                size_hint:1,0.1
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                text: "3. Array"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text_color: .2,.2,.6, 1
+                on_press:
+                    app.root.current = 'ArrayWindow'
+                    root.manager.transition.direction = 'left'
+
+
+        MDSeparator:
+            height:"10dp"
+
+        MDRaisedButton:
+            text:'Back'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            on_press:
+                app.root.current = "HomeScreen"
+                root.manager.transition.direction = "right"
+
+
+
+<AlgorithmWindow>:
+    name:"AlgorithmWindow"
+
+    MDBoxLayout:
+        md_bg_color: .0, .0, .0, 0
+        orientation:'vertical'
+        MDToolbar:
+            title: "Algorithm"
+            font_name:'Cairo-Bold'
+            font_size:"20dp"
+            anchor_title: 'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+
+
+        MDBoxLayout:
+            orientation:'vertical'
+            Button:
+                size_hint:1,0.1
+                text: "1.Linear Search"
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current = 'StackWindow'
+                    root.manager.transition.direction = 'left'
+
+
+            Button:
+                size_hint:1,0.1
+                text: "2.Binary Search"
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text_color: .2,.2,.6, 1
+                font_name:'Roboto-Bold'
+                on_press:
+                    app.root.current = 'QueueWindow'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                size_hint:1,0.1
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                text: "3.Merge Sort"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text_color: .2,.2,.6, 1
+                on_press:
+                    app.root.current = 'ArrayWindow'
+                    root.manager.transition.direction = 'left'
+
+        MDSeparator:
+            height:"10dp"
+        MDRaisedButton:
+            text:'Back'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            on_press:
+                app.root.current = "HomeScreen"
+                root.manager.transition.direction = "right"
+
+
+<StackWindow>:
+    name: 'StackWindow'
+    MDBoxLayout:
+        orientation: 'vertical'
+        Image:
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            source: 'Stack.png'
+
+        MDCard:
+            orientation: "vertical"
+            size_hint: 1, 2
+            padding: "8dp"
+            size: "280dp", "400dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDSeparator:
+                height: "2dp"
+
+            MDLabel:
+                md_bg_color: 1, 1, 1, 1
+                text_color: .2,.2,.6, 1
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                text: "In computer science, a stack is an abstract data type that serves as a collection of elements, with two main principal operations: Push, which adds an element to the collection, and Pop, which removes the most recently added element that was not yet removed.Basic Operations \nStack operations may involve initializing the stack, using it and then de-initializing it. Apart from these basic stuffs, a stack is used for the following two primary operations\n1.Push\n2.Pop"
+
+
+        BoxLayout:
+            Button:
+                size_hint:0.5,0.5
+                text:"Visualize"
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current = 'StackVisualizer'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                size_hint: 0.5,0.5
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                text:"Back"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current =  'DataStructureWindow'
+                    root.manager.transition.direction = 'right'
+
+
+<StackVisualizer>:
+    name:'StackVisualizer'
+    BoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            title: "Stack-Visualizer"
+            font_name:'Cairo-Bold'
+            font_size:"20dp"
+            anchor_title: 'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+
+        MDSeparator:
+            height:"20dp"
+            background_color:(20/255.0,29/255.0,36/255.0,0.9)
+
+        BoxLayout:
+            orientation:'vertical'
+            size_hint:.2,.2
+            padding:.2,.2,.2,.2
+            spacing:.2
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            Button:
+                id:9
+                background_color:0,0,0,0
+            Button:
+                id:8
+                background_color:0,0,0,0
+            Button:
+                id:7
+                background_color:0,0,0,0
+            Button:
+                id:6
+                background_color:0,0,0,0
+            Button:
+                id:5
+                background_color:0,0,0,0
+            Button:
+                id:4
+                background_color:0,0,0,0
+            Button:
+                id:3
+                background_color:0,0,0,0
+            Button:
+                id:2
+                background_color:0,0,0,0
+            Button:
+                id:1
+                background_color:0,0,0,0
+            Button:
+                id:0
+                background_color:0,0,0,0
+
+        MDSeparator:
+            height:"20dp"
+
+        MDLabel:
+            size_hint:1,.02
+            text:'Operation:'
+
+        MDLabel:
+            size_hint:1,.02
+            id:l1
+            text:''
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.5,.02
+            padding:.2,.2,.2,.2
+            spacing:.2
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            TextInput:
+                id:text_input
+                text:''
+                halign:'center'
+                valign:'middle'
+                multiline:'false'
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Push'
+                on_press:root.push()
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Pop'
+                on_press:root.pop()
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Back'
+                on_press:
+                    app.root.current =  'StackWindow'
+                    root.manager.transition.direction = 'right'
+
+
+<QueueWindow>:
+    name:'QueueWindow'
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        Image:
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            source: 'Queue.png'
+
+        MDCard:
+            orientation: "vertical"
+            size_hint: 1, 2
+            padding: "8dp"
+            size: "280dp", "400dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDSeparator:
+                height: "2dp"
+
+            MDLabel:
+                md_bg_color: 1, 1, 1, 1
+                text_color: .2,.2,.6, 1
+                font_size:15
+                text: "In computer science, a stack is an abstract data type that serves as a collection of elements, with two main principal operations: Push, which adds an element to the collection, and Pop, which removes the most recently added element that was not yet removed.Basic Operations \nStack operations may involve initializing the stack, using it and then de-initializing it. Apart from these basic stuffs, a stack is used for the following two primary operations\n1.Push\n2.Pop"
+
+
+        BoxLayout:
+            Button:
+                size_hint:0.5,0.5
+                text:"Visualize"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current = 'QueueVisualizer'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                size_hint: 0.5,0.5
+                text:"Back"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current =  'DataStructureWindow'
+                    root.manager.transition.direction = 'right'
+
+
+<QueueVisualizer>:
+    name:'QueueVisualizer'
+    BoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            title: "Queue-Visualizer"
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            anchor_title: 'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+
+        MDSeparator:
+            height:'20dp'
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.8,.1
+            padding:.5,.5,.5,.5
+            spacing: 0
+            pos_hint:{'center_x':.5,'center_y':.5}
+            Button:
+                id:0
+                text:'1'
+                background_color:0,0,0,0
+            Button:
+                id:1
+                text:'2'
+                background_color:0,0,0,0
+            Button:
+                id:2
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:3
+                text:'4'
+                background_color:0,0,0,0
+            Button:
+                id:4
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:5
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:6
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:7
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:8
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:9
+                text:'3'
+                background_color:0,0,0,0
+
+        MDSeparator:
+            height:'20dp'
+
+        MDLabel:
+            size_hint:1,.02
+            text:'Operation:'
+
+        MDLabel:
+            size_hint:1,.02
+            id:l2
+            text:''
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.5,.02
+            padding:.2,.2,.2,.2
+            spacing:.2
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            TextInput:
+                id:text_input
+                text:''
+                halign:'center'
+                valign:'middle'
+                multiline:'false'
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"12dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Enqueue'
+                on_press:root.enqueue()
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"12dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Dequeue'
+                on_press:root.dequeue()
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"12dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Back'
+                on_press:
+                    app.root.current =  'QueueWindow'
+                    root.manager.transition.direction = 'right'
+            MDLabel:
+                id:l1
+                text:''
+
+<LinearSearch>:
+    name:'LinearSearch'
+    BoxLayout:
+        orientation:'vertical'
+
+        Button:
+            text: ''
+            size_hint:1,.04
+            background_color:0,0,0,0
+
+        BoxLayout:
+            orientation:'vertical'
+            pos_hint:{"center_x":.5,"center_y":.5}
+            size_hint:.4,.2
+            padding:.2,.2,.2,.2
+            BoxLayout:
+                orientation:'horizontal'
+                Button:
+                    id:a0
+                    background_color:0,0,0,0
+                Button:
+                    id:a1
+                    background_color:0,0,0,0
+                Button:
+                    id:a2
+                    background_color:0,0,0,0
+                Button:
+                    id:a3
+                    background_color:0,0,0,0
+                Button:
+                    id:a4
+                    background_color:0,0,0,0
+                Button:
+                    id:a5
+                    background_color:0,0,0,0
+
+            BoxLayout:
+                orientation:'horizontal'
+                Button:
+                    id:t0
+                    background_color:0,0,0,0
+                Button:
+                    id:t1
+                    background_color:0,0,0,0
+                Button:
+                    id:t2
+                    background_color:0,0,0,0
+                Button:
+                    id:t3
+                    background_color:0,0,0,0
+                Button:
+                    id:t4
+                    background_color:0,0,0,0
+                Button:
+                    id:t5
+                    background_color:0,0,0,0
+
+        Button:
+            text: ''
+            size_hint:1,.04
+            background_color:0,0,0,0
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.4,.04
+            pos_hint:{"center_x":.5,"center_y":.5}
+            TextInput:
+                id: lstext_input
+                text:''
+            Button:
+                text:"Enter"
+                on_press: root.create_array()
+            Button:
+                text:'LinearSearch'
+                on_press: root.ls()
+
+
+
+
+
+<ArrayWindow>:
+    name: 'ArrayWindow'
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        Image:
+            pos_hint:{"centre_x":0.5,"centre_y":0.5}
+            allow_stretch:True
+            keep_ratio:False
+            size_hint:1,1
+            source: 'Array.png'
+
+        MDCard:
+            orientation: "vertical"
+            size_hint: 1, 2
+            padding: "8dp"
+            size: "280dp", "400dp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDSeparator:
+                height: "2dp"
+
+            MDLabel:
+                md_bg_color: 1, 1, 1, 1
+                text_color: .2,.2,.6, 1
+                font_size:15
+                text: "In computer science, a stack is an abstract data type that serves as a collection of elements, with two main principal operations: Push, which adds an element to the collection, and Pop, which removes the most recently added element that was not yet removed.Basic Operations \nStack operations may involve initializing the stack, using it and then de-initializing it. Apart from these basic stuffs, a stack is used for the following two primary operations\n1.Push\n2.Pop"
+
+
+        BoxLayout:
+            Button:
+                size_hint:0.5,0.5
+                text:"Visualize"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current = 'ArrayVisualizer'
+                    root.manager.transition.direction = 'left'
+
+            Button:
+                size_hint: 0.5,0.5
+                text:"Back"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                on_press:
+                    app.root.current =  'DataStructureWindow'
+                    root.manager.transition.direction = 'right'
+
+
+<ArrayVisualizer>:
+    name:'ArrayVisualizer'
+    BoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            title: "Array-Visualizer"
+            font_name:'Cairo-Bold'
+            font_size:"15dp"
+            anchor_title:'center'
+            md_bg_color:(20/255.0,29/255.0,36/255.0,0.9)
+        MDSeparator:
+            height:'20dp'
+        BoxLayout:
+            name:'Window-seperator'
+            orientation:'vertical'
+            size_hint:.1,.04
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.8,.04
+            padding:.5,.5,.5,.5
+            spacing: 10
+            pos_hint:{'center_x':.5,'center_y':.5}
+            Button:
+                id:z0
+                text:'0'
+                background_color:0,0,0,0
+            Button:
+                id:z1
+                text:'1'
+                background_color:0,0,0,0
+            Button:
+                id:z2
+                text:'2'
+                background_color:0,0,0,0
+            Button:
+                id:z3
+                text:'3'
+                background_color:0,0,0,0
+            Button:
+                id:z4
+                text:'4'
+                background_color:0,0,0,0
+            Button:
+                id:z5
+                text:'5'
+                background_color:0,0,0,0
+            Button:
+                id:z6
+                text:'6'
+                background_color:0,0,0,0
+            Button:
+                id:z7
+                text:'7'
+                background_color:0,0,0,0
+            Button:
+                id:z8
+                text:'8'
+                background_color:0,0,0,0
+            Button:
+                id:z9
+                text:'9'
+                background_color:0,0,0,0
+
+        BoxLayout:
+            name:'Window-seperator'
+            orientation:'vertical'
+            size_hint:.1,.04
+
+        MDSeparator:
+            height:'20dp'
+
+        BoxLayout:
+            name:'Window-seperator'
+            orientation:'vertical'
+            size_hint:.1,.04
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:.5,.02
+            padding:.2,.2,.2,.2
+            spacing:.2
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            TextInput:
+                id:text_input
+                text:''
+                halign:'center'
+                valign:'middle'
+                multiline:'false'
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text: 'Enter Data'
+                on_press:root.ed()
+            Button:
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                background_color:(20/255.0,29/255.0,36/255.0,0.9)
+                text:'Back'
+                on_press:
+                    app.root.current =  'ArrayWindow'
+                    root.manager.transition.direction = 'right'
+            MDLabel:
+                id:label
+                font_name:'Cairo-Bold'
+                font_size:"15dp"
+                text:''
+
